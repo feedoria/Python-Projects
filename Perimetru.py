@@ -99,6 +99,47 @@ def schema_generala_de_mutatie(populatie, pm):
 
     return populatie_noua
 
+
+def repara_fara_duplicate(copil, n_total):
+    valori_folosite = set()
+    pozitii_duplicate = []
+
+    for i in range(len(copil)):
+        if copil[i] in valori_folosite:
+            pozitii_duplicate.append(i)
+        else:
+            valori_folosite.add(copil[i])
+
+    valori_disponibile = []
+
+    for valoare in range(n_total):
+        if valoare not in valori_folosite:
+            valori_disponibile.append(valoare)
+
+    for pozitie in pozitii_duplicate:
+        valoare_noua = random.choice(valori_disponibile)
+        copil[pozitie] = valoare_noua
+        valori_disponibile.remove(valoare_noua)
+
+    return copil
+
+def recombinare_uniforma_cu_reparare(p1, p2, n_total):
+    copil1 = []
+    copil2 = []
+
+    for i in range(len(p1)):
+        if random.random() < 0.5:
+            copil1.append(p1[i])
+            copil2.append(p2[i])
+        else:
+            copil1.append(p2[i])
+            copil2.append(p1[i])
+
+    copil1 = repara_fara_duplicate(copil1, n_total)
+    copil2 = repara_fara_duplicate(copil2, n_total)
+
+    return copil1, copil2
+
 def GA(dimensiune_populatie, numar_generatii, probabilitate_mutatie, dimensiune_turneu):
     populatie = genereaza_populatie(dimensiune_populatie)
 

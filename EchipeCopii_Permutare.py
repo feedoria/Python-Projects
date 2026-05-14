@@ -122,6 +122,83 @@ def schema_generala_mutatie(populatie, pm): # pm = probabilitatea de mutatie
 
     return populatie_noua
 
+import random
+
+def probabilitati_fps_sigma_scalare(populatie, c=2):
+    # 1. Calculez fitness-ul fiecarui individ
+    valori_fitness = []
+
+    for individ in populatie:
+        valori_fitness.append(fitness(individ))
+
+    # 2. Calculez media fitness-urilor
+    media = sum(valori_fitness) / len(valori_fitness)
+
+    # 3. Calculez sigma = deviatia standard
+    suma_patrate = 0
+
+    for valoare in valori_fitness:
+        suma_patrate += (valoare - media) ** 2
+
+    sigma = (suma_patrate / len(valori_fitness)) ** 0.5
+
+    # 4. Aplic sigma-scalarea
+    valori_scalate = []
+
+    for valoare in valori_fitness:
+        g = max(valoare - (media - c * sigma), 0)
+        valori_scalate.append(g)
+
+    # 5. Transform valorile scalate in probabilitati FPS
+    suma_scalata = sum(valori_scalate)
+
+    probabilitati = []
+
+    if suma_scalata == 0:
+        # daca toate valorile sunt 0, alegem uniform
+        for _ in populatie:
+            probabilitati.append(1 / len(populatie))
+    else:
+        for valoare in valori_scalate:
+            probabilitati.append(valoare / suma_scalata)
+
+    return probabilitati
+
+def selectie_SUS_sigma_scalare(populatie, nr_parinti):
+    # 1. Calculez probabilitatile FPS cu sigma-scalare
+    probabilitati = probabilitati_fps_sigma_scalare(populatie)
+
+    # 2. Construiesc distributia cumulata
+    cumul = []
+    suma = 0
+
+    for p in probabilitati:
+        suma += p
+        cumul.append(suma)
+
+    # 3. Generez punctele SUS
+    parinti = []
+
+    pas = 1 / nr_parinti
+    start = random.uniform(0, pas)
+
+    puncte = []
+
+    for k in range(nr_parinti):
+        puncte.append(start + k * pas)
+
+    # 4. Pentru fiecare punct, gasesc individul corespunzator in distributia cumulata
+    i = 0
+
+    for punct in puncte:
+        while i < len(cumul) - 1 and punct > cumul[i]:
+            i += 1
+
+        parinti.append(populatie[i].copy())
+
+    return parinti
+
+
 def GA(dim, nr_gen, pm): #nr_gen = nr de generatii/iteratii, pm=probab de mutatie
     populatie = genereaza_populatie(dim)
 

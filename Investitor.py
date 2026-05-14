@@ -152,6 +152,35 @@ def schema_generala_mutatie(populatie, pm):
 
     return populatie_noua
 
+def recombinare_aritmetica(p1,p2):
+    copil1 = []
+    copil2 = []
+    alpha = random.random()
+
+    for i in range(p1):
+        copil1.append(alpha * p1[i] + (1 - alpha) * p2[i])
+        copil2.append(alpha * p2[i] + (1 - alpha) * p1[i])
+
+    return copil1, copil2
+
+def recombinare_aritmetica_cu_fezabilitate(p1, p2):
+    alpha = random.random()
+
+    copil1 = []
+    copil2 = []
+
+    for i in range(len(p1)):
+        copil1.append(alpha * p1[i] + (1 - alpha) * p2[i])
+        copil2.append(alpha * p2[i] + (1 - alpha) * p1[i])
+
+    if not este_fezabil(copil1):
+        copil1 = p1.copy()
+
+    if not este_fezabil(copil2):
+        copil2 = p2.copy()
+
+    return copil1, copil2
+
 def selectie_parinte_turneu(populatie, dim_turneu):
     if dim_turneu <= len(populatie):
         candidati = random.sample(populatie, dim_turneu)

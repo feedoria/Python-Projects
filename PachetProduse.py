@@ -127,6 +127,20 @@ def selectie_turneu(populatie, dim_turneu):
 
     return cel_mai_bun.copy()
 
+def recombinare_uniforma(p1, p2):
+    copil1 = []
+    copil2 = []
+
+    for i in range(len(p1)):
+        if random.random() < 0.5:
+            copil1.append(p1[i])
+            copil2.append(p2[i])
+        else:
+            copil1.append(p2[i])
+            copil2.append(p1[i])
+
+    return copil1, copil2
+
 
 def GA(dim_pop, nr_gen, probabilitate_mutatie, dim_turneu):
     populatie = generare_populatie(dim_pop)

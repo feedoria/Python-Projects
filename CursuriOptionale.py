@@ -137,6 +137,17 @@ def selectare_parinte_turneu(populatie,dim_turneu):
 
     return cel_mai_bun.copy()
 
+def recombinare_unipunct(p1, p2):
+    n = len(p1)
+
+    punct = random.randint(1, n - 1)
+
+    copil1 = p1[:punct] + p2[punct:]
+    copil2 = p2[:punct] + p1[punct:]
+
+    return copil1, copil2
+
+
 def GA(dim_pop, nr_gen, probab_mutatie, dim_turneu):
     populatie = generare_populatie(dim_pop)
 
