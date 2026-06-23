@@ -1,0 +1,155 @@
+[
+    {
+        "name": "Haunted Hotel",
+        "genre": "Horror Simulation",
+        "description": "A management game set in a haunted hotel.",
+        "platform": "PC",
+        "status": "Idea",
+        "difficulty": 1,
+        "tasks": [
+            {
+                "task_id": "f4f1baa4-5db5-4b16-979d-893c4e3014ba",
+                "title": "Create inventory data model",
+                "description": "",
+                "status": "Done",
+                "difficulty": 5,
+                "priority": "High",
+                "estimated_hours": 4.0
+            },
+            {
+                "task_id": "95def180-957e-46f7-9bdd-f868166f2775",
+                "title": "Create inventory UI",
+                "description": "",
+                "status": "Done",
+                "difficulty": 6,
+                "priority": "High",
+                "estimated_hours": 6.0
+            }
+        ],
+        "mechanics": [
+            {
+                "mechanic_id": "b73b60de-1c17-4e0f-98d3-eff64c2c4975",
+                "name": "Inventory",
+                "description": "neaparat",
+                "priority": "High"
+            },
+            {
+                "mechanic_id": "b706ad4c-32d8-4f00-af17-195cc5484929",
+                "name": "Crafting",
+                "description": "",
+                "priority": "Medium"
+            },
+            {
+                "mechanic_id": "49f680ba-e50a-4903-9e0d-1ea577264df7",
+                "name": "Collect",
+                "description": "blablabla",
+                "priority": "Medium"
+            },
+            {
+                "mechanic_id": "13275061-1604-466c-8ab9-9fe9ea9a3acb",
+                "name": "New mechanic",
+                "description": "high priority mechanic",
+                "priority": "High"
+            }
+        ],
+        "assets": [],
+        "technologies": [],
+        "mechanic_connections": [
+            {
+                "connection_id": "5de893ca-3e46-44f5-8bb2-a10351cb0501",
+                "source_mechanic_id": "b73b60de-1c17-4e0f-98d3-eff64c2c4975",
+                "target_mechanic_id": "b706ad4c-32d8-4f00-af17-195cc5484929",
+                "label": "Provides materials"
+            },
+            {
+                "connection_id": "92cdffd5-fb46-4867-81dc-f609e0900be3",
+                "source_mechanic_id": "13275061-1604-466c-8ab9-9fe9ea9a3acb",
+                "target_mechanic_id": "b73b60de-1c17-4e0f-98d3-eff64c2c4975",
+                "label": ""
+            }
+        ],
+        "task_dependencies": [
+            {
+                "dependency_id": "1113d771-beed-4be0-aa4f-dc5ffe8584c6",
+                "prerequisite_task_id": "f4f1baa4-5db5-4b16-979d-893c4e3014ba",
+                "dependent_task_id": "95def180-957e-46f7-9bdd-f868166f2775"
+            }
+        ],
+        "task_mechanic_links": [
+            {
+                "task_id": "f4f1baa4-5db5-4b16-979d-893c4e3014ba",
+                "mechanic_id": "b73b60de-1c17-4e0f-98d3-eff64c2c4975"
+            },
+            {
+                "task_id": "95def180-957e-46f7-9bdd-f868166f2775",
+                "mechanic_id": "b73b60de-1c17-4e0f-98d3-eff64c2c4975"
+            }
+        ],
+        "node_layouts": [
+            {
+                "node_id": "b73b60de-1c17-4e0f-98d3-eff64c2c4975",
+                "view_name": "Mechanics",
+                "position_x": 48.0,
+                "position_y": 258.0,
+                "width": 180.0,
+                "height": 90.0
+            },
+            {
+                "node_id": "b706ad4c-32d8-4f00-af17-195cc5484929",
+                "view_name": "Mechanics",
+                "position_x": 480.0,
+                "position_y": 170.0,
+                "width": 180.0,
+                "height": 90.0
+            },
+            {
+                "node_id": "f4f1baa4-5db5-4b16-979d-893c4e3014ba",
+                "view_name": "Tasks",
+                "position_x": 148.0,
+                "position_y": 398.0,
+                "width": 180.0,
+                "height": 90.0
+            },
+            {
+                "node_id": "95def180-957e-46f7-9bdd-f868166f2775",
+                "view_name": "Tasks",
+                "position_x": 561.0,
+                "position_y": 180.0,
+                "width": 180.0,
+                "height": 90.0
+            },
+            {
+                "node_id": "49f680ba-e50a-4903-9e0d-1ea577264df7",
+                "view_name": "Mechanics",
+                "position_x": 585.0,
+                "position_y": 322.0,
+                "width": 180.0,
+                "height": 90.0
+            },
+            {
+                "node_id": "13275061-1604-466c-8ab9-9fe9ea9a3acb",
+                "view_name": "Mechanics",
+                "position_x": 368.0,
+                "position_y": 414.0,
+                "width": 180.0,
+                "height": 90.0
+            }
+        ]
+    },
+    {
+        "name": "new proj",
+        "genre": "rpg",
+        "description": "sfaskfkja",
+        "platform": "PC",
+        "status": "Idea",
+        "difficulty": 1,
+        "tasks": [],
+        "mechanics": [],
+        "assets": [],
+        "technologies": [],
+        "mechanic_connections": [],
+        "task_dependencies": [],
+        "task_mechanic_links": [],
+        "node_layouts": []
+    }
+]
